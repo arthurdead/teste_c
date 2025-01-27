@@ -401,10 +401,14 @@ int main(int argc, char *argv[argc])
 						printf("%li", curr->value);
 						curr = curr->next;
 						while(curr) {
+							value_list_node_t *next_value = curr->next;
 							printf(",%li", curr->value);
-							curr = curr->next;
+							free(curr);
+							curr = next_value;
 						}
 						printf("%c\n", ']');
+
+						free(sorted_values);
 					}
 				}
 			}
